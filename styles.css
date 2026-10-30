@@ -99,3 +99,7 @@ dialog form{margin-top:12px}
 .panel h4{margin:.8em 0 .2em}
 .pill.A{color:var(--warn);border-color:var(--warn)}
 .pill.R{color:#d64541;border-color:#d64541}
+
+.code th,.code td{font-size:13px;min-width:140px}.code th small{color:var(--mute);font-weight:400;text-transform:none;letter-spacing:0}
+.code th[scope=row]{text-transform:none;letter-spacing:0;font-size:13px;color:var(--ink);cursor:default;white-space:normal}
+h4{font-size:1rem;margin:1.2em 0 .3em}

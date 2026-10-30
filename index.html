@@ -24,7 +24,7 @@
   <section id="overview">
     <h1>Which states make government AI visible to benefits applicants?</h1>
     <p class="lede">When a state agency uses software to score, flag or decide on a Medicaid, SNAP or unemployment case, can the public see that the tool exists, can the person affected learn it was used, is it tested for bias, can a human review the result, and are vendors accountable? This site maps state laws and bills against that five-part framework, plus oversight and enforcement.</p>
-    <p class="note"><b>Working draft.</b> Most of the details come from secondary sources (law-firm summaries, trackers, LegiScan) and have not been checked against statute text. Each entry shows a confidence level and a link. See <a href="#about">About</a> for what to verify before citing.</p>
+    <p class="note"><b>Working draft.</b> Most of the details come from secondary sources (law-firm summaries, trackers, LegiScan) and have not been checked against statute text. Each entry shows a confidence level and a source link; the <a href="#about">codebook</a> explains how entries are coded.</p>
     <div class="stats" id="stats"></div>
   </section>
 
@@ -68,33 +68,42 @@
     <h2>About this site</h2>
     <h3>The framework</h3>
     <p>The six rows come from the policy paper this project is built on, which proposes a state bill regulating automated decision systems (ADS) in public benefits programs: (1) a public inventory of ADS; (2) notice and a plain-language explanation to the person affected; (3) impact assessment, testing and monitoring; (4) meaningful human review and appeal of adverse decisions; (5) vendor and developer obligations; plus enforcement and an oversight body. It borrows from OMB memo M-25-21, New York's LOADinG Act, Colorado's SB 26-189 and Texas's TRAIGA.</p>
-    <h3>What counts</h3>
-    <ul>
-      <li><b>Government use only.</b> The map covers state and federal rules on how <i>agencies</i> use AI or automated decision systems. Chatbot, deepfake, social media, schools and private-insurer laws are not included, even though they were passed in large numbers in 2026. An earlier version of this site counted them; that was the wrong scope for this topic.</li>
-      <li><b>Benefits-specific</b> entries explicitly name benefits, Medicaid, SNAP or eligibility decisions. <b>Government (general)</b> entries regulate agency AI use without naming benefits.</li>
-      <li><b>Enacted laws from any year count</b>, because the earliest relevant laws (Vermont 2022, Connecticut 2023, New York 2024) predate 2026. Bills are from the 2025 and 2026 sessions.</li>
-    </ul>
     <h3>Sources</h3>
     <ul>
       <li>Bill status and 2026 sessions: LegiScan bulk datasets (exported Aug. to Oct. 2026), checked bill by bill.</li>
       <li>Older enacted laws and federal policy: law-firm summaries, state legislature pages and trackers found by web search on Oct. 29, 2026. Source links are on every entry.</li>
       <li>Framework and New York, Colorado, Texas and federal details: the policy paper.</li>
     </ul>
-    <h3>Check these before citing</h3>
+    <h3>Codebook</h3>
+    <p>Every entry is coded by hand from its source using the rules below. Codes describe how closely a law or bill resembles each part of the framework in the policy paper, not whether it is good policy.</p>
+    <div class="scroll"><table class="code">
+      <thead><tr><th>Part</th><th>What the framework asks for</th><th>Close match (●)</th><th>Loose match (◐)</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Public inventory<br><small>Step 1</small></th><td>Each agency publishes a machine-readable, annually updated inventory of every ADS used in a covered decision: name, purpose, vendor, deployment date, last impact assessment, waivers.</td><td>Agencies must inventory the AI or ADS they use, with a public posting or report.</td><td>An inventory exists but is internal or partial, or the law creates a registry of a different kind.</td></tr>
+        <tr><th scope="row">Notice and explanation<br><small>Step 2</small></th><td>Each notice says whether an ADS was used, names it, and gives a plain-language explanation of an adverse decision within a set number of days, with ways to correct data and request review.</td><td>The person affected must be told an automated tool was used, or must receive an explanation of an adverse outcome.</td><td>Only a general duty to disclose AI use or AI interaction, not tied to a decision about the person.</td></tr>
+        <tr><th scope="row">Impact assessment, testing and monitoring<br><small>Step 3</small></th><td>A published assessment before use (accuracy, error rates by protected group, proxy testing, edge cases), ongoing monitoring, re-testing when the model or vendor changes, and discontinuation of discriminatory systems.</td><td>A required pre-use impact assessment, testing or recurring monitoring of agency systems.</td><td>Risk-management standards, or an assessment duty that is vague, narrow or known only from a short summary.</td></tr>
+        <tr><th scope="row">Human review and appeal<br><small>Step 4</small></th><td>No adverse decision rests solely on automated output. Timely, meaningful human review and an appeal, preserving existing fair-hearing rights.</td><td>A human must review, verify or make the final decision on decisions that affect rights or benefits.</td><td>A policy-level requirement, or review limited to certain plans or decision types.</td></tr>
+        <tr><th scope="row">Vendor and developer duties<br><small>Step 5</small></th><td>Contracts require documentation of intended uses, limits, validation and subgroup performance, cooperation with audits, tiered disclosure, and no trade-secret bar to applicant disclosure.</td><td>Developers or vendors must give agencies or deployers documentation, or cooperate with assessments.</td><td>The vendor is named in an inventory, or the law only touches procurement.</td></tr>
+        <tr><th scope="row">Oversight body and enforcement<br><small>Design choice</small></th><td>An independent office or commission, attorney-general enforcement, a private right of action, or none; penalties and cure periods.</td><td>A designated enforcement authority with penalties, or an independent oversight office.</td><td>An advisory council or committee, or reporting to the legislature only.</td></tr>
+      </tbody>
+    </table></div>
+    <h4>Other codes</h4>
     <ul>
-      <li><b>New York.</b> The paper describes impact assessments every two years, 30-day advance transmission to the governor, and mandatory discontinuation under the LOADinG Act. Research for this site found that New York's 2025 expansion bill (S 7599, signed Dec. 2025) contained the assessment and inventory article and was repealed in Feb. 2026 by S 8831, before it took effect. I could not confirm whether the original 2024 law (Article 4) contains the assessment duties the paper cites. Please check the statute text.</li>
-      <li><b>Colorado.</b> SB 26-189 names "essential government services and public benefits," but I could not confirm whether state and local agencies count as regulated deployers.</li>
-      <li><b>OMB M-25-21.</b> I could not retrieve the memo itself. The benefits and fraud-detection wording comes from your paper.</li>
-      <li><b>California.</b> AB 302 and SB 896 are described from secondary sources only.</li>
-      <li><b>Older-law links</b> (such as Arkansas, Montana, Indiana, Texas HB 2060 and the California 2023 and 2024 bills) point to LegiScan's usual address format and were not opened, so a link may not load.</li>
-      <li><b>Not a complete census.</b> Searches may miss laws in states with thin coverage. A gray state means nothing was found.</li>
+      <li><b>Rolled back (✕).</b> A duty that was once required and has been removed or repealed. Example: Colorado's SB 26-189 removed impact assessments from the 2024 law.</li>
+      <li><b>None found (○).</b> Nothing in the sources checked matches this part. It does not prove no such rule exists.</li>
+      <li><b>Outcome.</b> <i>Enacted</i>: signed into law (the date it takes effect may be later). <i>Repealed before effect</i>: signed, then undone before it applied. <i>Still in session</i>: alive in a legislature that has not adjourned (Massachusetts, Michigan, North Carolina, Pennsylvania and similar). <i>Failed or died</i>: failed a vote, died in committee, was held for study, or was still unpassed when its session ended. <i>Vetoed</i>: passed but vetoed.</li>
+      <li><b>Scope.</b> <i>Names benefits or eligibility</i>: the text or description explicitly covers benefits, Medicaid, SNAP or eligibility decisions. <i>Government AI use (general)</i>: regulates agency AI use without naming benefits.</li>
+      <li><b>Confidence.</b> <i>High</i>: an official legislature page or two or more independent sources agree. <i>Medium</i>: one secondary source, or sources partly conflict. <i>Low</i>: thin description (often only a title or one summary) and should be checked against the text.</li>
+      <li><b>Years.</b> Enacted laws count from any year, because the earliest relevant ones (Vermont 2022, Connecticut 2023, New York 2024) predate 2026. Bills are from the 2025 and 2026 sessions.</li>
+      <li><b>Included.</b> State and federal rules on how <i>agencies</i> use AI or automated decision systems, plus bills and laws on Medicaid, SNAP or eligibility. <b>Not included:</b> chatbot, deepfake, social media, school and private-insurer laws.</li>
     </ul>
-    <h3>Left out on purpose</h3>
+    <h4>Map colors</h4>
     <ul>
-      <li>Laws on private insurers' use of AI in prior authorization (Alabama, Utah, Washington, Georgia, Indiana and others). They share goals with benefits transparency but regulate companies, not agencies. Ohio SB 315 and the Medicaid managed-care bills in North Carolina, Michigan and Pennsylvania are kept because they name Medicaid.</li>
-      <li>Federal context that is not a rule: the December 2025 executive order (EO 14365) threatening to preempt state AI laws, the failed congressional moratorium, and MACPAC's 2026 recommendations on human review of automated Medicaid denials.</li>
-      <li>Litigation that motivates the framework: Michigan's MiDAS unemployment fraud system (settled for $20 million), Idaho's Medicaid budget tool (<i>K.W. v. Armstrong</i>) and Arkansas's home-care hours algorithm.</li>
+      <li><b>Green</b>: at least one enacted law. <b>Yellow</b>: no enacted law, but a bill is still alive. <b>Red</b>: nothing in force; bills failed, died or were repealed. <b>Gray</b>: nothing found. A state with both an enacted law and failed bills is green.</li>
+      <li>The "benefits-specific" map view applies the same colors to entries that name benefits only. The "framework parts covered" view counts parts with at least a loose match in an <i>enacted</i> law (0 to 6).</li>
     </ul>
+    <h4>Downloaded table columns</h4>
+    <p>Jurisdiction, bill, title, year, outcome, scope, one column per framework part (close, loose, rolled back or none), description, confidence and source link.</p>
   </section>
 </main>
 
