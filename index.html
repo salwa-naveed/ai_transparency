@@ -3,33 +3,33 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>State AI Transparency Law Map, 2026</title>
-<meta name="description" content="Map and framework chart of state AI laws enacted in 2026, compared against a four-step transparency framework for automated decision systems in public benefits.">
+<title>AI Transparency in Public Benefits: State Law Map</title>
+<meta name="description" content="Map and framework chart of state laws and bills on government use of automated decision systems, focused on public benefits programs like Medicaid and SNAP.">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <header class="site-header">
-  <a class="brand" href="#overview"><span class="logo">SAT</span><span><b>State AI Transparency Law Map</b><small>2026 state AI laws vs. a public-benefits transparency framework</small></span></a>
+  <a class="brand" href="#overview"><span class="logo">ATB</span><span><b>AI Transparency in Public Benefits</b><small>State laws on government automated decision systems</small></span></a>
   <button id="menuBtn" aria-label="Open navigation menu" aria-expanded="false">Menu</button>
   <nav id="nav">
     <a href="#overview">Overview</a>
     <a href="#map">Map</a>
     <a href="#chart">Framework chart</a>
-    <a href="#laws">All laws</a>
+    <a href="#laws">All policies</a>
     <a href="#about">About</a>
   </nav>
 </header>
 
 <main>
   <section id="overview">
-    <h1>State AI laws, 2026</h1>
-    <p class="lede">A map of the 115 AI measures that 30 states passed or sent to governors in 2026, plus documented vetoed and failed bills, and a chart that lines those laws up against a four-step transparency framework for automated decision systems (ADS) in public benefits programs.</p>
-    <p class="note"><b>Working draft.</b> The laws come from the Transparency Coalition's 2026 State AI Legislation Report. The framework comes from the policy paper in this project. Almost none of the 2026 laws cover government benefits systems, so most matches are analogues, not equivalents. See <a href="#about">About</a>.</p>
+    <h1>Which states make government AI visible to benefits applicants?</h1>
+    <p class="lede">When a state agency uses software to score, flag or decide on a Medicaid, SNAP or unemployment case, can the public see that the tool exists, can the person affected learn it was used, is it tested for bias, can a human review the result, and are vendors accountable? This site maps state laws and bills against that five-part framework, plus oversight and enforcement.</p>
+    <p class="note"><b>Working draft.</b> Most of the details come from secondary sources (law-firm summaries, trackers, LegiScan) and have not been checked against statute text. Each entry shows a confidence level and a link. See <a href="#about">About</a> for what to verify before citing.</p>
     <div class="stats" id="stats"></div>
   </section>
 
   <section id="map">
-    <h2>Where the laws are</h2>
+    <h2>Where states stand</h2>
     <div class="bar">
       <div class="field"><label for="metric">Color states by</label><select id="metric"></select></div>
     </div>
@@ -38,64 +38,74 @@
   </section>
 
   <section id="chart">
-    <h2>Framework chart: states vs. policy steps</h2>
-    <p class="lede">Each row is one piece of the recommended framework. Each column is a jurisdiction. A cell shows the closest 2026 laws, from the report plus the extra bills found in LegiScan (or, for New York, Texas, Colorado and the federal government, the model the paper cites). Click any cell for the details.</p>
+    <h2>Framework chart: policy parts by state</h2>
+    <p class="lede">Each row is one part of the recommended framework. Each column is a jurisdiction: Texas, New York and California from your whiteboard, plus Colorado, Maryland and Ohio (the states whose enacted laws name benefits or Medicaid) and the federal government. Add any other state from the menu. A cell shows the closest law or bill. Click a cell for details, sources and caveats.</p>
     <div class="legend2" aria-label="Chart key">
-      <span><i class="dot l2">●</i> Close analogue</span>
-      <span><i class="dot l1">◐</i> Loose analogue</span>
-      <span><i class="dot l0">○</i> Nothing found in the sources</span>
+      <span><i class="dot l2">●</i> Close match</span>
+      <span><i class="dot l1">◐</i> Partial or loose match</span>
+      <span><i class="dot l0">○</i> None found</span>
+      <span><i class="dot l0">✕</i> Rolled back or repealed</span>
     </div>
     <div class="bar" id="colBar"></div>
     <div class="scroll" id="chartHost"></div>
-    <p class="small">Federal and Texas columns use the policy paper (and, where marked <span class="bgtag">verify</span>, background knowledge not in the uploaded sources). State columns use 2026 laws only, so a state's older laws, such as New York's 2024 LOADinG Act, appear only through the benchmark columns.</p>
+    <p class="small">Only enacted laws and rules count toward a filled cell. Bills that failed or are still pending are shown in the cell's details, not as coverage. "None found" means none turned up in the sources checked, not that none exist.</p>
   </section>
 
   <section id="laws">
-    <h2>All bills</h2>
+    <h2>All policies and bills</h2>
     <div class="filters">
       <div><label for="q">Search</label><input id="q" type="search" placeholder="Bill number, title, state"></div>
       <div><label for="fst">Outcome</label><select id="fst"></select></div>
       <div><label for="fs">State</label><select id="fs"></select></div>
-      <div><label for="fc">Topic</label><select id="fc"></select></div>
-      <div><label for="ff">Framework step</label><select id="ff"></select></div>
+      <div><label for="fsc">Scope</label><select id="fsc"></select></div>
+      <div><label for="ff">Framework part</label><select id="ff"></select></div>
     </div>
-    <div class="bar"><span id="lawCount" class="small"></span><span class="sp"></span><button id="more">Show 200 more</button><button id="csv">Download CSV</button></div>
-    <div class="scroll"><table id="lawTable"><thead><tr><th>State</th><th>Bill</th><th>What it does</th><th>Topic</th><th>Status</th><th>Framework</th></tr></thead><tbody></tbody></table></div>
+    <div class="bar"><span id="lawCount" class="small"></span><span class="sp"></span><button id="csv">Download CSV</button></div>
+    <div class="scroll"><table id="lawTable"><thead><tr><th>State</th><th>Bill or law</th><th>What it does</th><th>Year</th><th>Outcome</th><th>Framework</th><th>Conf.</th></tr></thead><tbody></tbody></table></div>
   </section>
 
   <section id="about">
     <h2>About this site</h2>
+    <h3>The framework</h3>
+    <p>The six rows come from the policy paper this project is built on, which proposes a state bill regulating automated decision systems (ADS) in public benefits programs: (1) a public inventory of ADS; (2) notice and a plain-language explanation to the person affected; (3) impact assessment, testing and monitoring; (4) meaningful human review and appeal of adverse decisions; (5) vendor and developer obligations; plus enforcement and an oversight body. It borrows from OMB memo M-25-21, New York's LOADinG Act, Colorado's SB 26-189 and Texas's TRAIGA.</p>
+    <h3>What counts</h3>
+    <ul>
+      <li><b>Government use only.</b> The map covers state and federal rules on how <i>agencies</i> use AI or automated decision systems. Chatbot, deepfake, social media, schools and private-insurer laws are not included, even though they were passed in large numbers in 2026. An earlier version of this site counted them; that was the wrong scope for this topic.</li>
+      <li><b>Benefits-specific</b> entries explicitly name benefits, Medicaid, SNAP or eligibility decisions. <b>Government (general)</b> entries regulate agency AI use without naming benefits.</li>
+      <li><b>Enacted laws from any year count</b>, because the earliest relevant laws (Vermont 2022, Connecticut 2023, New York 2024) predate 2026. Bills are from the 2025 and 2026 sessions.</li>
+    </ul>
     <h3>Sources</h3>
     <ul>
-      <li><b>Laws:</b> Transparency Coalition, <i>2026 State AI Legislation Report</i> (published Oct. 27, 2026; legislation data from LegiScan). It counts bills signed or passed and awaiting signature as of Oct. 15, 2026, and excludes vetoed bills. <b>Updated Oct. 29, 2026:</b> Pennsylvania SB 806 (signed Oct. 22, Act 99) and New York S 9051 (signed Oct. 28) are now shown as enacted. Five other New York bills still await Gov. Hochul, who has until Dec. 31.</li>
-      <li><b>Vetoed, failed, pending and in-session bills:</b> LegiScan bulk legislative datasets (CSV Basic) for every 2026 state session, exported Aug. to Oct. 2026. Bills are screened for AI terms in the title and the start of the description, then sorted by LegiScan's official status. Each row links to its LegiScan page. A build script in <code>tools/build_outcomes.py</code> regenerates <code>data/outcomes.js</code> from the downloads.</li>
-      <li><b>Framework:</b> the recommended policy framework in the fellowship paper: (1) public inventory of ADS, (2) individual notice and explanation, (3) impact assessment, testing and monitoring, (4) vendor and developer obligations, plus design choices on scope, covered decisions and enforcement. It borrows from federal OMB M-25-21 and New York's LOADinG Act.</li>
+      <li>Bill status and 2026 sessions: LegiScan bulk datasets (exported Aug. to Oct. 2026), checked bill by bill.</li>
+      <li>Older enacted laws and federal policy: law-firm summaries, state legislature pages and trackers found by web search on Oct. 29, 2026. Source links are on every entry.</li>
+      <li>Framework and New York, Colorado, Texas and federal details: the policy paper.</li>
     </ul>
-    <h3>How laws were matched to the framework</h3>
-    <p>The author read each law's summary in the report and tagged the framework step it most resembles. <b>Close analogue</b> means the law imposes a similar duty (for example, Indiana's HB 1271 requires insurers to disclose AI use in a denial and offer an appeal, which resembles Step 2). <b>Loose analogue</b> means a related idea in a different setting (for example, chatbot disclosure laws resemble notice). Summaries are short, so some laws are tagged conservatively. The tags are judgments, not findings in the report. Please check a bill's text before relying on a tag.</p>
-    <h3>What the chart shows about the gap</h3>
-    <p>The 2026 wave is dominated by chatbot safety, kids' social media, deepfakes and health insurance. None of the enacted or pending entries creates a public inventory of government benefits ADS, and none gives benefits applicants a notice of automated decision-making with an explanation right. The closest analogues are in health insurance (human review and AI-use disclosure), frontier-model audits (Illinois SB 315, California SB 813 and AB 1405) and chatbot reporting (Rhode Island). Colorado's SB 189 moved the other way by removing annual impact assessments.</p>
-    <h3>Limits</h3>
+    <h3>Check these before citing</h3>
     <ul>
-      <li>The map shows 2026 only. Earlier laws are not on it.</li>
-      <li><b>Not a complete count.</b> The Transparency Coalition's 115 is its own tally. NCSL reportedly counts about 280 AI laws enacted in 2026 because it casts a wider net (for example deepfake and government-use measures), but I could not open NCSL's database to confirm its scope. Treat this site as a view of the Coalition's set plus the extras listed here.</li>
-      <li><b>Keyword screen.</b> Failed, vetoed and in-session bills are found by keyword (such as "artificial intelligence", "chatbot", "deepfake", "algorithm"). That catches most AI bills but also some unrelated ones, and misses bills whose titles never mention AI. Treat counts as approximate.</li>
-      <li><b>Snapshot dates.</b> LegiScan files were exported between summer and Oct. 25, 2026, so very recent signings can lag. I corrected New York S 9051 (signed Oct. 28) and Pennsylvania SB 806 (signed Oct. 22) by hand.</li>
-      <li><b>Died means the session ended.</b> A bill still introduced or passed one chamber when its legislature adjourned counts as failed. Massachusetts, Michigan, Ohio, New Jersey, North Carolina, Pennsylvania and D.C. are still in session, so their bills show as "still in session".</li>
-      <li><b>Extra enacted laws.</b> The 26 enacted bills beyond the Coalition's list (many in Tennessee and Louisiana) were found by the keyword screen and checked by title. I tagged them to the framework by hand from LegiScan's short descriptions, so those tags are the least certain. New York S 8831 is tagged from a one-line description and should be checked against the bill text.</li>
-      </ul>
+      <li><b>New York.</b> The paper describes impact assessments every two years, 30-day advance transmission to the governor, and mandatory discontinuation under the LOADinG Act. Research for this site found that New York's 2025 expansion bill (S 7599, signed Dec. 2025) contained the assessment and inventory article and was repealed in Feb. 2026 by S 8831, before it took effect. I could not confirm whether the original 2024 law (Article 4) contains the assessment duties the paper cites. Please check the statute text.</li>
+      <li><b>Colorado.</b> SB 26-189 names "essential government services and public benefits," but I could not confirm whether state and local agencies count as regulated deployers.</li>
+      <li><b>OMB M-25-21.</b> I could not retrieve the memo itself. The benefits and fraud-detection wording comes from your paper.</li>
+      <li><b>California.</b> AB 302 and SB 896 are described from secondary sources only.</li>
+      <li><b>Older-law links</b> (such as Arkansas, Montana, Indiana, Texas HB 2060 and the California 2023 and 2024 bills) point to LegiScan's usual address format and were not opened, so a link may not load.</li>
+      <li><b>Not a complete census.</b> Searches may miss laws in states with thin coverage. A gray state means nothing was found.</li>
+    </ul>
+    <h3>Left out on purpose</h3>
+    <ul>
+      <li>Laws on private insurers' use of AI in prior authorization (Alabama, Utah, Washington, Georgia, Indiana and others). They share goals with benefits transparency but regulate companies, not agencies. Ohio SB 315 and the Medicaid managed-care bills in North Carolina, Michigan and Pennsylvania are kept because they name Medicaid.</li>
+      <li>Federal context that is not a rule: the December 2025 executive order (EO 14365) threatening to preempt state AI laws, the failed congressional moratorium, and MACPAC's 2026 recommendations on human review of automated Medicaid denials.</li>
+      <li>Litigation that motivates the framework: Michigan's MiDAS unemployment fraud system (settled for $20 million), Idaho's Medicaid budget tool (<i>K.W. v. Armstrong</i>) and Arkansas's home-care hours algorithm.</li>
+    </ul>
   </section>
 </main>
 
 <dialog id="dlg"><div id="dlgBody"></div><form method="dialog"><button>Close</button></form></dialog>
-<footer class="site-footer">Working draft. 2026 laws only, as of Oct. 15, 2026. Framework tags are the author's reading of the report's summaries.</footer>
+<footer class="site-footer">Working draft, as of Oct. 29, 2026. Student research project; not legal advice. Bill data from LegiScan (CC BY 4.0).</footer>
 
 <script src="vendor/d3-array.min.js"></script>
 <script src="vendor/d3-geo.min.js"></script>
 <script src="vendor/topojson-client.min.js"></script>
 <script src="vendor/us-states.js"></script>
-<script src="data/data.js"></script>
-<script src="data/outcomes.js"></script>
+<script src="data/policies.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
