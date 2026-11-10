@@ -125,3 +125,6 @@ details>summary{font-size:15px;font-weight:600}
 .fwtable th,.fwtable td{min-width:210px;max-width:260px}
 
 .qs.cav{padding:6px 10px;border-left:4px solid var(--warn);background:color-mix(in srgb,var(--warn) 12%,transparent);border-radius:0 4px 4px 0}
+
+a.dl{display:inline-block;padding:10px 16px;border-radius:6px;background:var(--acc);color:var(--card);font-weight:700;text-decoration:none}
+a.dl:hover{filter:brightness(1.1)}

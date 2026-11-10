@@ -195,10 +195,20 @@ document.addEventListener('click',e=>{const b=e.target.closest('.copy');if(!b)re
   const t=b.dataset.phrase;const done=()=>{const o=b.textContent;b.textContent='Copied';setTimeout(()=>b.textContent=o,1200)};
   if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(done,()=>{});else done()});
 $('#toggleQ').onclick=()=>{const t=$('#toggleQ');const open=t.dataset.open!=='1';t.dataset.open=open?'1':'0';t.textContent=open?'Collapse all quotes':'Expand all quotes';document.querySelectorAll('#laws details').forEach(d=>d.open=open)};
+/* ---------- audit ---------- */
+(function(){const A=window.AUDIT;if(!A)return;const s=A.stats;
+  const items=[[s.quotes+' of '+s.quotes,'quotes confirmed as exact text matches by script'],[s.ok+' / '+s.minor+' / '+s.major,'auditor severity: OK / minor / serious'],
+    [s.labelWrong,'section labels corrected'],[s.notSupported,'quotes dropped (did not support the part cited)'],[s.ratingsApplied+' of '+s.ratingsDisagree,'auditor rating changes applied'],
+    [s.claimsWrong,'description claims contradicted by the text (fixed)'],[Object.values(Q).reduce((n,v)=>n+v.q.filter(x=>x.caveat).length,0),'quotes carrying an audit caveat']];
+  $('#auditStats').innerHTML=items.map(x=>`<div class="stat"><b>${x[0]}</b><span>${x[1]}</span></div>`).join('');
+  $('#auditRatings tbody').innerHTML=A.ratingChanges.map(r=>`<tr><td>${esc(r.entry)}</td><td>${esc(r.part)}</td><td>${esc(r.action)}</td></tr>`).join('');
+  $('#auditQuotes tbody').innerHTML=A.quoteChanges.map(r=>`<tr><td>${esc(r.entry)}</td><td>${esc(r.part)}</td><td>${esc(r.where)}</td><td>${esc(r.action)}</td><td>${esc(r.why)}</td></tr>`).join('');
+  $('#auditClaims tbody').innerHTML=A.claimFixes.map(r=>`<tr><td>${esc(r.entry)}</td><td>${esc(r.claim)}</td><td>${esc(r.evidence)}</td></tr>`).join('');
+})();
 /* ---------- nav ---------- */
 $('#menuBtn').onclick=()=>{const n=$('#nav');const o=n.classList.toggle('open');$('#menuBtn').setAttribute('aria-expanded',o)};
 $('#nav').addEventListener('click',()=>$('#nav').classList.remove('open'));
-const secs=['overview','map','chart','laws','about'].map(id=>document.getElementById(id));
+const secs=['overview','map','chart','laws','audit','about'].map(id=>document.getElementById(id));
 addEventListener('scroll',()=>{let cur=secs[0].id;secs.forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id});document.querySelectorAll('#nav a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur))},{passive:true});
 
 drawMap();drawChart();drawTable();
