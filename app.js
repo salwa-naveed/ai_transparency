@@ -110,7 +110,7 @@ function wireMap(){
 }
 function pick(a){selected=a;drawMap();panel(a)}
 const order='EAVRF';
-const item=(l,part)=>`<li><b>${esc(l.bill)}</b> (${l.year}): ${esc(l.title)} <span class="pill ${l.status}">${SL[l.status]}</span> ${tagStr(l)}<br><span class="small">${esc(l.desc)} Confidence: ${confTxt[l.conf]}. ${l.url?`<a href="${esc(l.url)}" target="_blank" rel="noopener">Source</a>`:''}</span>${(part?qOf(l).q.length:qCount(l))?`<details open><summary>${part?'Evidence for this part':'Evidence: quotes from the text ('+qCount(l)+')'}</summary>${quotesHtml(l,part)}</details>`:''}</li>`;
+const item=(l,part)=>`<li><b>${esc(l.bill)}</b> (${l.year}): ${esc(l.title)} <span class="pill ${l.status}">${SL[l.status]}</span> ${tagStr(l)}<br><span class="small">${esc(l.desc)} Confidence: ${confTxt[l.conf]}. ${l.url?`<a href="${esc(l.url)}" target="_blank" rel="noopener">Source</a>`:''}</span>${(part?qOf(l).q.length:qCount(l))?`<details><summary>${part?'Evidence for this part':'Evidence: quotes from the text ('+qCount(l)+')'}</summary>${quotesHtml(l,part)}</details>`:''}</li>`;
 function panel(a){
   const ls=(by[a]||[]).slice().sort((x,y)=>order.indexOf(x.status)-order.indexOf(y.status)),host=$('#statePanel');
   if(!ls.length){host.innerHTML=`<h3>${esc(NAME[a])}</h3><p>No law or bill on government use of AI or automated decision systems turned up in the sources checked. That is not proof none exists. Check the state legislature's own site.</p>`;return}
@@ -142,7 +142,7 @@ function cellHtml(c,k){
   if(!x.en.length&&x.rb.length)txt.push(`Rolled back: ${esc(x.rb[0].bill.split(' (')[0])}`);
   if(!x.en.length&&!x.rb.length&&x.other.length){const o=x.other[0];txt.push(`${o.status==='A'?'Bill alive':'Bill failed'}: ${esc(o.bill)}`)}
   const low=x.en.length&&x.en.every(d=>d.conf==='L')?' <span class="bgtag">low confidence</span>':'';
-  return `<td class="f${x.lvl}"><button class="cell ${c2}" data-c="${c}" data-k="${k}" aria-label="${esc(NAME[c])}, ${esc(FWN[k].n)}: ${x.lvl===2?'close match':x.lvl===1?'partial match':x.rb.length?'rolled back':'none found'}"><span class="sym">${sym}</span>${txt.length?txt.join(', '):'<span class="more">None found</span>'}${snippet(c,k)}${low}</button></td>`;
+  return `<td class="f${x.lvl}"><button class="cell ${c2}" data-c="${c}" data-k="${k}" aria-label="${esc(NAME[c])}, ${esc(FWN[k].n)}: ${x.lvl===2?'close match':x.lvl===1?'partial match':x.rb.length?'rolled back':'none found'}"><span class="sym">${sym}</span>${txt.length?txt.join(', '):'<span class="more">None found</span>'}${low}</button></td>`;
 }
 function drawChart(){
   const avail=['FED'].concat(STATES).filter(c=>!cols.includes(c));
@@ -181,7 +181,7 @@ function drawTable(){
   rows=D.filter(d=>(!u||d.status===u)&&(!s||d.st===s)&&(!c||d.scope===c)&&(!f||d.fw[f]>0)&&(!q||(d.bill+' '+d.title+' '+NAME[d.st]+' '+d.desc).toLowerCase().includes(q)));
   rows=rows.slice().sort((a,b)=>order.indexOf(a.status)-order.indexOf(b.status)||a.st.localeCompare(b.st));
   $('#lawCount').textContent=`${rows.length} of ${D.length} entries`;
-  $('#lawTable tbody').innerHTML=rows.map(l=>`<tr><td>${esc(NAME[l.st])}</td><td>${l.url?`<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.bill)}</a>`:esc(l.bill)}</td><td>${esc(l.title)}<br><span class="small">${esc(l.desc)}</span></td><td>${l.year}</td><td><span class="pill ${l.status}">${SL[l.status]}</span><br><span class="small">${SC[l.scope]}</span></td><td>${tagStr(l)||'<span class="small">None</span>'}</td><td>${confTxt[l.conf]}</td></tr>${qCount(l)?`<tr class="evid"><td colspan="7"><details open><summary>Evidence: quotes from the text (${qCount(l)})</summary>${quotesHtml(l)}</details></td></tr>`:''}`).join('')||'<tr><td colspan="7">No entries match.</td></tr>';
+  $('#lawTable tbody').innerHTML=rows.map(l=>`<tr><td>${esc(NAME[l.st])}</td><td>${l.url?`<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.bill)}</a>`:esc(l.bill)}</td><td>${esc(l.title)}<br><span class="small">${esc(l.desc)}</span></td><td>${l.year}</td><td><span class="pill ${l.status}">${SL[l.status]}</span><br><span class="small">${SC[l.scope]}</span></td><td>${tagStr(l)||'<span class="small">None</span>'}</td><td>${confTxt[l.conf]}</td></tr>${qCount(l)?`<tr class="evid"><td colspan="7"><details><summary>Evidence: quotes from the text (${qCount(l)})</summary>${quotesHtml(l)}</details></td></tr>`:''}`).join('')||'<tr><td colspan="7">No entries match.</td></tr>';
 }
 ['#q','#fs','#fst','#fsc','#ff'].forEach(id=>$(id).addEventListener('input',drawTable));
 $('#csv').onclick=()=>{

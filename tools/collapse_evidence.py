@@ -1,0 +1,15 @@
+"""Makes quote evidence collapsed by default (pull-down on click) and removes the always-visible quote snippets from chart cells."""
+import os
+R = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
+ap = os.path.join(R, 'app.js')
+s = open(ap, encoding='utf-8').read()
+n0 = s.count('<details open')
+s = s.replace("<details${part?' open':''}>", "<details>")
+s = s.replace('<details open><summary>Evidence: quotes from the text', '<details><summary>Evidence: quotes from the text')
+s = s.replace("${snippet(c,k)}", "")
+open(ap, 'w', encoding='utf-8').write(s)
+hp = os.path.join(R, 'index.html')
+h = open(hp, encoding='utf-8').read()
+h = h.replace('<button id="toggleQ" data-open="1">Collapse all quotes</button>', '<button id="toggleQ" data-open="0">Expand all quotes</button>')
+open(hp, 'w', encoding='utf-8').write(h)
+print('open-details before:', n0, 'after:', s.count('<details open'), '| snippet calls left:', s.count('${snippet(c,k)}'))
