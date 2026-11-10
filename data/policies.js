@@ -7,10 +7,10 @@ window.POL=[
 2025,
 "E",
 "ben",
-"I2 A2 H2",
-"Annual public AI use-case inventories; for high-impact AI: pre-deployment testing, impact assessment, ongoing monitoring, human oversight and appeals; waivers reported publicly. Agencies had until Apr. 3, 2026. The policy paper says high-impact uses include adjudicating benefits and fraud detection; that wording was not confirmed in the memo itself.",
+"I2 A2 H2 O1",
+"Annual public AI use-case inventories; for high-impact AI: pre-deployment testing, impact assessment, ongoing monitoring, human oversight and appeals. Its list of high-impact uses includes adjudicating benefits applications, determining continued eligibility for ongoing benefits, detecting fraud in government services, and adjudicating penalties in benefits programs. The Chief AI Officer is internal; the memo has no notice-to-individuals duty. Agencies had until Apr. 3, 2026.",
 "https://regulations.ai/regulations/RAI-US-NA-OMMAFXX-2025",
-"M"
+"H"
 ],
 [
 "FED",
@@ -19,10 +19,10 @@ window.POL=[
 2025,
 "E",
 "gov",
-"V1",
-"Governs how federal agencies buy AI from vendors, for contracts awarded or renewed from about Oct. 2025. Known only from law-firm summaries; the memo itself and its vendor-documentation terms were not retrieved.",
+"A1 V1",
+"Governs how federal agencies buy AI. Solicitations for AI with potential high-impact uses should require AI-use transparency terms (Sec. 4(c)(i)); contract terms (Sec. 4(d)) include ensuring M-25-21 compliance and ongoing testing and monitoring, with agency access for independent evaluation. Effective dates not checked.",
 null,
-"L"
+"H"
 ],
 [
 "NY",
@@ -31,10 +31,10 @@ null,
 2024,
 "E",
 "ben",
-"I2 A2 H2 O1",
-"Chapter 696 of 2024, amended by Chapter 96 of 2025. State agencies disclose the automated tools they use; the policy paper cites it for public impact assessments every two years, 30-day advance transmission to the governor and legislators, and mandatory discontinuation of discriminatory systems. A researcher found human review of rights-and-benefits decisions in it. NOT re-verified against the statute text: check Article 4 of the State Technology Law, because the 2025 expansion (S 7599) was repealed in 2026.",
+"I1 A2 H2 V1 O1",
+"Chapter 696 of 2024, amended by Chapter 96 of 2025. Checked against the S 7543-B text: Article 4 restricts state-agency use of automated decision-making systems (Sec. 402), requires impact assessments at least once every two years and before material changes (Sec. 403), and requires each assessment to go to the governor and legislative leaders at least thirty days before implementation and to be published on the agency website (Sec. 404). The NY Senate sponsor memo describes it as barring unauthorized agency use without meaningful human review. It also requires an agency to cease using a system whose assessment finds discriminatory or biased outcomes (Sec. 403(2)). It has no public inventory (disclosures go to the legislature). The signed 2024 chapter may differ from this print, so check the final text. The 2025 expansion (S 7599) was repealed in 2026.",
 "https://www.nysenate.gov/legislation/bills/2023/S7543",
-"M"
+"H"
 ],
 [
 "NY",
@@ -44,7 +44,7 @@ null,
 "R",
 "gov",
 "I2 A2",
-"Signed Dec. 19, 2025 (Chapter 711): agency tool lists, impact assessments every two years, inventory on the open data site. Repealed before taking effect by S 8831 (Chapter 86 of 2026), which keeps only employment-tool lists.",
+"Signed Dec. 19, 2025 (Chapter 711): agency tool lists, impact assessments every two years, inventory on the open data site. S 8831 (Chapter 86, signed Feb. 13, 2026) repealed that article before it took effect and keeps only employment-tool lists. The repeal language was read from the introduced print of S 8831, so check the signed version.",
 "https://www.nysenate.gov/legislation/bills/2025/S7599",
 "H"
 ],
@@ -55,10 +55,10 @@ null,
 2023,
 "E",
 "gov",
-"I2 A2 O1",
+"I2 A2 V1 O1",
 "The Department of Administrative Services inventories state-agency AI systems and posts them on the open data portal; impact assessments are required before deployment. Benefits are not named.",
 "https://portal.ct.gov/das",
-"M"
+"H"
 ],
 [
 "CT",
@@ -67,10 +67,10 @@ null,
 2026,
 "E",
 "gov",
-"I1 A1 V1",
-"Signed May 27, 2026. A secondary source says state agencies must complete impact assessments before procurement and the state inventory must record vendor and assessment status. Details not confirmed against the text.",
+"I2 A2 V1 O1",
+"Signed May 27, 2026. Sec. 37: the Department of Administrative Services must inventory state-agency AI systems annually (including date of last impact assessment, access to personal information, known risks) and post it on the open data portal. Sec. 38: an agency authorized to procure AI technology must complete an AI impact assessment under state standards, posted on its website at least 60 days before deployment. Sec. 38 mentions public assistance benefits.",
 "https://legiscan.com/CT/bill/SB00005/2026",
-"L"
+"H"
 ],
 [
 "MD",
@@ -79,7 +79,7 @@ null,
 2024,
 "E",
 "ben",
-"I2 A2 V1 O2",
+"I2 A2 V1 O1",
 "Chapter 496 of 2024. The Department of Information Technology keeps a public inventory (vendor, purpose, assessment status) and requires impact assessments for high-risk AI; its definition of rights-impacting AI includes government benefits. A Governor's AI Subcabinet oversees it. No notice or human-review duty found.",
 "https://mgaleg.maryland.gov/2024RS/chapters_noln/Ch_496_sb0818E.pdf",
 "H"
@@ -91,10 +91,10 @@ null,
 2022,
 "E",
 "gov",
-"I2 A1 O2",
+"I2 A1 V1 O1",
 "Created a Division of AI in the Agency of Digital Services, required an inventory of automated decision systems that \"make or support government decisions\", and an AI Council. Notice, human review and vendor duties not found.",
 "https://legislature.vermont.gov/bill/status/2022/H.410",
-"M"
+"H"
 ],
 [
 "CA",
@@ -103,10 +103,10 @@ null,
 2023,
 "E",
 "gov",
-"I2 O1",
-"The Department of Technology inventories high-risk ADS used by state agencies and reports to the legislature. Whether the statute names benefits was not re-checked.",
+"I2 A1 O1",
+"The Department of Technology inventories high-risk automated decision systems used by state agencies and reports to the legislature. Health care is among the areas in its high-risk definition; public benefits, Medicaid, SNAP and eligibility are not named.",
 "https://legiscan.com/CA/bill/AB302/2023",
-"M"
+"H"
 ],
 [
 "CA",
@@ -115,10 +115,10 @@ null,
 2024,
 "E",
 "gov",
-"I1 N2 A1",
-"State agencies must disclose generative AI use in public communications; risk analysis and an inventory of generative AI uses.",
+"N1 A1",
+"When a state agency uses generative AI to communicate directly with a person about government services and benefits, it must include a disclaimer that the content was AI-generated and information on how to contact a human employee. Text review found no agency inventory or oversight body in the act.",
 "https://legiscan.com/CA/bill/SB896/2023",
-"M"
+"H"
 ],
 [
 "CO",
@@ -127,8 +127,8 @@ null,
 2026,
 "E",
 "ben",
-"N2 H2 V2 O2 A0",
-"Signed May 14, 2026, effective Jan. 1, 2027. Names \"essential government services and public benefits\" as a covered area. Notice when used, explanation of adverse outcomes within 30 days, meaningful human review and data correction, developer documentation to deployers, attorney-general enforcement with a 60-day cure. It removed the earlier impact-assessment and risk-management duties. Whether state and local agencies count as regulated deployers is unresolved.",
+"N2 A0 H1 V2 O2",
+"Signed May 14, 2026, effective Jan. 1, 2027. Lists \"essential government services and public benefits, including eligibility and renewal determinations\" as a covered domain. Notice, explanation of adverse outcomes, human review, developer documentation, attorney-general enforcement with a cure period. It repealed and re-enacted the 2024 law without impact-assessment duties. OPEN QUESTION: \"deployer\" is defined as \"a person doing business in Colorado that deploys a covered ADMT\"; the bill neither names nor exempts state or local agencies.",
 "https://leg.colorado.gov/bills/SB26-189",
 "H"
 ],
@@ -139,7 +139,7 @@ null,
 2025,
 "E",
 "gov",
-"N1 O2",
+"I1 N1 O2",
 "Effective Jan. 1, 2026. Agencies must tell people when they interact with AI; bars social scoring; creates an AI Council and a sandbox. Attorney-general enforcement only, 60-day cure, penalties up to $200,000 per violation. No impact-assessment, human-review or vendor duty.",
 "https://www.akingump.com/en/insights/ai-law-and-regulation-tracker/texas-enacts-a-pair-of-ai-governance-laws-hb-149-and-sb-1188",
 "H"
@@ -151,10 +151,10 @@ null,
 2025,
 "E",
 "gov",
-"I2 A1 O1",
-"Agency AI inventories posted on the open data portal; the Department of Information Resources sets risk-management standards for \"heightened scrutiny\" AI (consequential decisions) and runs a public-sector sandbox. Benefits not named.",
+"I1 N1 A2 H1 V1 O1",
+"Agencies inventory their AI systems and report them to the Department of Information Resources (the text does not require public posting). The Department sets minimum risk-management standards for \"heightened scrutiny\" AI, including pre-deployment assessment, and agencies or their vendors must conduct a system assessment. Benefits not named.",
 "https://capitol.texas.gov/BillLookup/History.aspx?LegSess=89R&Bill=SB1964",
-"M"
+"H"
 ],
 [
 "TX",
@@ -163,10 +163,10 @@ null,
 2023,
 "E",
 "gov",
-"O1",
-"Created an AI Advisory Council to study state-agency AI use.",
+"I1 V1 O1",
+"Created a temporary AI Advisory Council to study state-agency AI use and required a report on agency automated decision systems. The council and its subchapter expire Jan. 1, 2025.",
 "https://legiscan.com/TX/bill/HB2060/2023",
-"M"
+"H"
 ],
 [
 "KY",
@@ -175,7 +175,7 @@ null,
 2025,
 "E",
 "gov",
-"I2 A1 O1",
+"I2 N2 A1 H1 V1 O1",
 "Signed Mar. 24, 2025. Creates an AI Governance Committee; the state technology office sets standards, requires an AI inventory, risk management for high-risk AI and annual reports; agencies must disclose AI use.",
 "https://apps.legislature.ky.gov/record/25rs/sb4.html",
 "H"
@@ -187,8 +187,8 @@ null,
 2025,
 "E",
 "gov",
-"N2 H2",
-"Effective Oct. 1, 2025. Government must disclose AI-published material and public-facing AI interfaces, and a human with authority to reject or change it must review any AI recommendation or decision that could affect a person's legal rights, duties or privileges. Benefits not named.",
+"N1 H2",
+"Signed May 5, 2025. Government must disclose AI-generated material that was not reviewed by a human, and public-facing AI interfaces. A human with authority to reject or change it must review any AI recommendation or decision that could affect a person's legal rights, duties or privileges. Benefits not named.",
 "https://legiscan.com/MT/bill/HB178/2025",
 "H"
 ],
@@ -199,10 +199,10 @@ null,
 2025,
 "E",
 "gov",
-"H1",
-"Effective Aug. 2025. Every public entity adopts a policy on authorized AI and automated decision tools; a human must make final decisions. No penalties or central oversight.",
+"H1 O1",
+"Act 848 of 2025. Every public entity adopts a policy on authorized AI and automated decision tools; a human must make final decisions. No penalties or central oversight.",
 "https://legiscan.com/AR/bill/HB1958/2025",
-"M"
+"H"
 ],
 [
 "IN",
@@ -211,10 +211,10 @@ null,
 2024,
 "E",
 "gov",
-"I1 O1",
-"Creates an AI task force; agencies inventory AI in use or under consideration. Whether the inventory is public was not confirmed. Expires Dec. 31, 2027.",
+"I1 A1 V1 O1",
+"Creates an AI task force. Agencies \"may\" inventory AI technologies; the inventory goes to the technology office and task force, not the public. Expires Dec. 31, 2027.",
 "https://legiscan.com/IN/bill/SB150/2024",
-"M"
+"H"
 ],
 [
 "UT",
@@ -223,22 +223,10 @@ null,
 2025,
 "E",
 "gov",
-"A1 O1",
-"Treats government automated decision-making as high-risk processing under the state data privacy act. Described by one tracker only.",
+"A1 V1 O1",
+"Treats automated decision-making and profiling by government as examples of \"high-risk processing\" under the state data privacy act; monitoring by the state office, a state-auditor process with a 30-day cure, and (HB 450) an ombudsperson and complaint process. No ADM-specific notice or human-review duty.",
 "https://legiscan.com/UT/bill/HB444/2025",
-"L"
-],
-[
-"UT",
-"HB 320",
-"Office of Artificial Intelligence Policy amendments",
-2026,
-"E",
-"gov",
-"O1",
-"Expands the Office of AI Policy's authority, including over other agencies. Content known only from the title.",
-"https://legiscan.com/UT/bill/HB0320/2026",
-"L"
+"H"
 ],
 [
 "OH",
@@ -247,10 +235,10 @@ null,
 2026,
 "E",
 "ben",
-"H2 O1",
+"H1 O1",
 "Signed July 2026, main provisions effective Oct. 6, 2026. The Medicaid department may use automated review and fraud-detection tools, but no action is taken without a department employee verifying the findings.",
 "https://legiscan.com/OH/bill/SB315/2025",
-"M"
+"H"
 ],
 [
 "NC",
@@ -259,10 +247,10 @@ null,
 2025,
 "A",
 "ben",
-"H2 V1 O1",
-"Would bar insurers and Medicaid prepaid health plans from using AI as the sole basis to deny care, with provider attestations. Passed the House; re-referred in the Senate June 2026.",
+"H1 V1 O1",
+"Would bar insurers and Medicaid prepaid health plans from using AI as the sole basis to deny care, with provider attestations and limits on AI that promotes upcoding. Passed the House; re-referred in the Senate June 2026.",
 "https://legiscan.com/NC/bill/H565/2025",
-"M"
+"H"
 ],
 [
 "MI",
@@ -283,10 +271,10 @@ null,
 2025,
 "A",
 "ben",
-"H1 N1",
+"N1 A2 H2 V1 O2",
 "Amends Title 67 (Public Welfare): AI in utilization review may not override clinical judgment, including for Medicaid and CHIP managed care plans. Passed the House; status conflicts between sources.",
 "https://legiscan.com/PA/bill/HB1925/2025",
-"M"
+"H"
 ],
 [
 "MA",
@@ -295,10 +283,10 @@ null,
 2025,
 "A",
 "gov",
-"H1",
+"I1 N1 A2 H1 V1 O1",
 "One tracker says it bars agency ADS for benefits or rights decisions unless a law authorizes it; LegiScan gives only a generic description. Reported favorably by committee.",
 "https://legiscan.com/MA/bill/H77/2025",
-"L"
+"H"
 ],
 [
 "NY",
@@ -307,7 +295,7 @@ null,
 2025,
 "F",
 "ben",
-"H2",
+"H2 O1",
 "Would bar state agencies from using AI to make decisions affecting individuals' rights, benefits or services; decisions made by human staff. Never left committee.",
 "https://legiscan.com/NY/bill/A07278/2025",
 "H"
@@ -319,10 +307,10 @@ null,
 2026,
 "F",
 "gov",
-"",
+"N1 A2 H2 O1",
 "Held in committee May 14, 2026. LegiScan gives no description; a tracker says it would limit state agency ADS, including for public benefits.",
 "https://legiscan.com/CA/bill/SB1248/2025",
-"M"
+"H"
 ],
 [
 "CA",
@@ -331,10 +319,10 @@ null,
 2025,
 "F",
 "ben",
-"H2",
+"N1 A2 H2 O1",
 "Failed Feb. 2, 2026. A tracker says it would bar ADS output as the sole basis for adverse supportive-services decisions by local agencies.",
 "https://legiscan.com/CA/bill/SB430/2025",
-"M"
+"H"
 ],
 [
 "CA",
@@ -346,18 +334,6 @@ null,
 "N1",
 "Amends the government code on generative AI in state agency communications. Did not pass.",
 "https://legiscan.com/CA/bill/AB2412/2025",
-"L"
-],
-[
-"HI",
-"SB 59",
-"Algorithmic discrimination and eligibility determinations",
-2025,
-"F",
-"ben",
-"N2 O2",
-"Would bar discriminatory algorithmic eligibility determinations, require notices to people whose data is used, annual reports to the attorney general and civil enforcement. Covers private users too. Carried over to 2026 and died.",
-"https://legiscan.com/HI/bill/SB59/2026",
 "H"
 ],
 [
@@ -367,8 +343,8 @@ null,
 2025,
 "F",
 "gov",
-"H2 A2 V1",
-"Would bar state agencies and contractors from using ADS without continuous meaningful human review and require impact assessments. Re-referred to Rules; no action.",
+"I1 A2 H2 V1",
+"Would bar state agencies and contractors from using ADS without continuous meaningful human review and require impact assessments. Its \"public assistance benefit\" definition appears to exclude federal programs run by the state, which may leave out Medicaid and SNAP. Re-referred to Rules; no action.",
 "https://legiscan.com/IL/bill/HB3567/2025",
 "H"
 ],
@@ -379,10 +355,10 @@ null,
 2025,
 "F",
 "gov",
-"I1 A1 V1",
-"Would have the Department of Innovation and Technology set rules on procurement, use and assessment of AI by state agencies. No action.",
+"A1 O1",
+"Would have the Department of Innovation and Technology set rules on procurement, use and assessment of AI by state agencies; agencies would file annual reports. No public inventory. No action.",
 "https://legiscan.com/IL/bill/SB1366/2025",
-"M"
+"H"
 ],
 [
 "GA",
@@ -391,7 +367,7 @@ null,
 2025,
 "F",
 "gov",
-"I2",
+"I2 A1 O1",
 "Would require the Georgia Technology Authority to inventory AI used by state agencies and report annually. Reported by a Senate committee in 2025; never passed.",
 "https://legiscan.com/GA/bill/HB147/2025",
 "H"
@@ -403,7 +379,7 @@ null,
 2026,
 "F",
 "gov",
-"I2 O2",
+"I2 A2 O1",
 "Would require an inventory of state agencies using AI and create a 13-member permanent commission. Held for further study.",
 "https://legiscan.com/RI/bill/H7119/2026",
 "H"
@@ -415,10 +391,10 @@ null,
 2026,
 "F",
 "gov",
-"H1",
+"I1 N1 A1 H2 O1",
 "Would set prohibited and permitted AI uses by state agencies through the state management office. A tracker says it required human review of high-risk decisions. Stalled in committee.",
 "https://legiscan.com/OK/bill/HB3545/2026",
-"M"
+"H"
 ],
 [
 "OR",
@@ -428,7 +404,7 @@ null,
 "F",
 "gov",
 "O1",
-"Would create a state commission on AI and a Chief AI Officer. Died in committee at adjournment.",
+"Would create a state commission on AI and require the Department of Administrative Services to employ someone responsible for AI planning (the Chief AI Officer title was struck in the engrossed version). Died in committee at adjournment.",
 "https://legiscan.com/OR/bill/HB4103/2026",
 "H"
 ],
@@ -439,10 +415,10 @@ null,
 2026,
 "F",
 "gov",
-"",
-"Passed the Senate and was amended; died after the chambers did not agree.",
+"I2 O1",
+"Passed the Senate and was amended in the House; on May 21, 2026 the Senate moved not to concur with the House amendment. No further action found; the session has ended.",
 "https://legiscan.com/NH/bill/SB657/2026",
-"M"
+"H"
 ],
 [
 "NH",
@@ -454,7 +430,7 @@ null,
 "",
 "Sent to interim study.",
 "https://legiscan.com/NH/bill/HB1506/2026",
-"M"
+"H"
 ],
 [
 "NM",
@@ -463,10 +439,10 @@ null,
 2026,
 "F",
 "gov",
-"",
+"H1",
 "Postponed indefinitely. LegiScan gives only the title.",
 "https://legiscan.com/NM/bill/SB68/2026",
-"M"
+"H"
 ],
 [
 "FL",
@@ -475,7 +451,7 @@ null,
 2026,
 "F",
 "gov",
-"",
+"I1",
 "Would have the Florida Digital Service study AI use by state agencies. Died in committee.",
 "https://legiscan.com/FL/bill/S0146/2026",
 "H"
@@ -490,7 +466,7 @@ null,
 "",
 "Would require the Department of Human Services to use automated commercial wage-verification services in benefits eligibility. Failed.",
 "https://legiscan.com/MS/bill/HB1640/2026",
-"M"
+"H"
 ],
 [
 "AK",
@@ -499,9 +475,9 @@ null,
 2025,
 "F",
 "gov",
-"",
+"I1 N2 A2 H2 V1 O1",
 "Includes rules on AI use by state agencies and data transfers between agencies. Referred to committee and not enacted before adjournment.",
 "https://legiscan.com/AK/bill/SB2/2025",
-"M"
+"H"
 ]
 ];

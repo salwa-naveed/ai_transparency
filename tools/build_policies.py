@@ -150,6 +150,60 @@ P = [
  LS+'AK/bill/SB2/2025','M'),
 ]
 
+
+# ---- text review (Nov. 2026): tags re-derived from the bill and memo text (see tools/reviewed_tags.json, built from quotes in data/quotes.js)
+KEYS = {('FED','OMB M-25-21'):'FED_M-25-21',('FED','OMB M-25-22'):'FED_M-25-22',('NY','LOADinG Act (S 7543)'):'NY_S7543',('NY','S 7599 / A 8295'):'NY_S7599',
+ ('CT','PA 23-16 (SB 1103)'):'CT_SB1103',('CT','PA 26-15 (SB 5)'):'CT_SB5',('MD','SB 818 (AI Governance Act)'):'MD_SB818',('VT','H 410 (Act 132)'):'VT_H410',
+ ('CA','AB 302'):'CA_AB302',('CA','SB 896'):'CA_SB896',('CO','SB 26-189'):'CO_SB189',('TX','HB 149 (TRAIGA)'):'TX_HB149',('TX','SB 1964'):'TX_SB1964',('TX','HB 2060'):'TX_HB2060',
+ ('KY','SB 4'):'KY_SB4',('MT','HB 178'):'MT_HB178',('AR','HB 1958 (Act 848)'):'AR_HB1958',('IN','SB 150'):'IN_SB150',('UT','HB 444 / HB 450'):'UT_HB444',
+ ('OH','SB 315'):'OH_SB315',('NC','H 565'):'NC_H565',('MI','HB 4537'):'MI_HB4537',('PA','HB 1925'):'PA_HB1925',('MA','H 77'):'MA_H77',('NY','A 7278'):'NY_A7278',
+ ('CA','SB 1248'):'CA_SB1248',('CA','SB 430'):'CA_SB430',('CA','AB 2412'):'CA_AB2412',('IL','HB 3567'):'IL_HB3567',('IL','SB 1366'):'IL_SB1366',
+ ('GA','HB 147'):'GA_HB147',('RI','H 7119'):'RI_H7119',('OK','HB 3545'):'OK_HB3545',('OR','HB 4103'):'OR_HB4103',('NH','SB 657'):'NH_SB657',('NH','HB 1506'):'NH_HB1506',
+ ('NM','SB 68'):'NM_SB68',('FL','S 146'):'FL_S146',('MS','HB 1640'):'MS_HB1640',('AK','SB 2'):'AK_SB2'}
+DROP = {('UT','HB 320'), ('HI','SB 59')}   # text shows UT HB 320 concerns private sandbox participants and HI SB 59 covers private entities, not agencies
+DESC = {
+ ('FED','OMB M-25-21'): 'Annual public AI use-case inventories; for high-impact AI: pre-deployment testing, impact assessment, ongoing monitoring, human oversight and appeals. Its list of high-impact uses includes adjudicating benefits applications, determining continued eligibility for ongoing benefits, detecting fraud in government services, and adjudicating penalties in benefits programs. The Chief AI Officer is internal; the memo has no notice-to-individuals duty. Agencies had until Apr. 3, 2026.',
+ ('CO','SB 26-189'): 'Signed May 14, 2026, effective Jan. 1, 2027. Lists "essential government services and public benefits, including eligibility and renewal determinations" as a covered domain. Notice, explanation of adverse outcomes, human review, developer documentation, attorney-general enforcement with a cure period. It repealed and re-enacted the 2024 law without impact-assessment duties. OPEN QUESTION: "deployer" is defined as "a person doing business in Colorado that deploys a covered ADMT"; the bill neither names nor exempts state or local agencies.',
+ ('CA','SB 896'): 'State agencies must disclose generative AI use in public communications, with a disclaimer saying how to reach a human; critical-infrastructure risk analysis. Text review found no agency inventory in the act itself.',
+ ('CT','PA 26-15 (SB 5)'): 'Signed May 27, 2026. Sec. 37: the Department of Administrative Services must inventory state-agency AI systems annually (including date of last impact assessment, access to personal information, known risks) and post it on the open data portal. Sec. 38: an agency must complete an AI impact assessment before procurement, posted on its website at least 60 days before deployment. Sec. 38 mentions public assistance benefits.',
+ ('IN','SB 150'): 'Creates an AI task force. Agencies "may" inventory AI technologies; the inventory goes to the technology office and task force, not the public. Expires Dec. 31, 2027.',
+ ('IL','HB 3567'): 'Would bar state agencies and contractors from using ADS without continuous meaningful human review and require impact assessments. Its "public assistance benefit" definition appears to exclude federal programs run by the state, which may leave out Medicaid and SNAP. Re-referred to Rules; no action.',
+ ('IL','SB 1366'): 'Would have the Department of Innovation and Technology set rules on procurement, use and assessment of AI by state agencies; agencies would file annual reports. No public inventory. No action.',
+ ('UT','HB 444 / HB 450'): 'Treats automated decision-making and profiling by government as examples of "high-risk processing" under the state data privacy act; monitoring by the state office, a state-auditor process with a 30-day cure, and (HB 450) an ombudsperson and complaint process. No ADM-specific notice or human-review duty.',
+ ('NC','H 565'): 'Would bar insurers and Medicaid prepaid health plans from using AI as the sole basis to deny care, with provider attestations and limits on AI that promotes upcoding. Passed the House; re-referred in the Senate June 2026.',
+}
+DESC.update({  # corrected after the independent audit (Nov. 2026): each claim re-checked against the bill text
+ ('FED','OMB M-25-22'): 'Governs how federal agencies buy AI. Solicitations for AI with potential high-impact uses should require AI-use transparency terms (Sec. 4(c)(i)); contract terms (Sec. 4(d)) include ensuring M-25-21 compliance and ongoing testing and monitoring, with agency access for independent evaluation. Effective dates not checked.',
+ ('TX','SB 1964'): 'Agencies inventory their AI systems and report them to the Department of Information Resources (the text does not require public posting). The Department sets minimum risk-management standards for "heightened scrutiny" AI, including pre-deployment assessment, and agencies or their vendors must conduct a system assessment. Benefits not named.',
+ ('CT','PA 26-15 (SB 5)'): 'Signed May 27, 2026. Sec. 37: the Department of Administrative Services must inventory state-agency AI systems annually (including date of last impact assessment, access to personal information, known risks) and post it on the open data portal. Sec. 38: an agency authorized to procure AI technology must complete an AI impact assessment under state standards, posted on its website at least 60 days before deployment. Sec. 38 mentions public assistance benefits.',
+ ('CA','AB 302'): 'The Department of Technology inventories high-risk automated decision systems used by state agencies and reports to the legislature. Health care is among the areas in its high-risk definition; public benefits, Medicaid, SNAP and eligibility are not named.',
+ ('CA','SB 896'): 'When a state agency uses generative AI to communicate directly with a person about government services and benefits, it must include a disclaimer that the content was AI-generated and information on how to contact a human employee. Text review found no agency inventory or oversight body in the act.',
+ ('OR','HB 4103'): 'Would create a state commission on AI and require the Department of Administrative Services to employ someone responsible for AI planning (the Chief AI Officer title was struck in the engrossed version). Died in committee at adjournment.',
+ ('MT','HB 178'): 'Effective Oct. 1, 2025. Government must disclose AI-generated material that was not reviewed by a human, and public-facing AI interfaces. A human with authority to reject or change it must review any AI recommendation or decision that could affect a person\'s legal rights, duties or privileges. Benefits not named.',
+ ('TX','HB 2060'): 'Created a temporary AI Advisory Council to study state-agency AI use and required a report on agency automated decision systems. The council and its subchapter expire Jan. 1, 2025.',
+})
+DESC.update({  # final audit (Nov. 2026): dates checked against LegiScan bill history, claims against bill text
+ ('NY','LOADinG Act (S 7543)'): 'Chapter 696 of 2024, amended by Chapter 96 of 2025. Checked against the S 7543-B text: Article 4 restricts state-agency use of automated decision-making systems (Sec. 402), requires impact assessments at least once every two years and before material changes (Sec. 403), and requires each assessment to go to the governor and legislative leaders at least thirty days before implementation and to be published on the agency website (Sec. 404). The NY Senate sponsor memo describes it as barring unauthorized agency use without meaningful human review. It also requires an agency to cease using a system whose assessment finds discriminatory or biased outcomes (Sec. 403(2)). It has no public inventory (disclosures go to the legislature). The signed 2024 chapter may differ from this print, so check the final text. The 2025 expansion (S 7599) was repealed in 2026.',
+ ('MT','HB 178'): 'Signed May 5, 2025. Government must disclose AI-generated material that was not reviewed by a human, and public-facing AI interfaces. A human with authority to reject or change it must review any AI recommendation or decision that could affect a person\'s legal rights, duties or privileges. Benefits not named.',
+ ('AR','HB 1958 (Act 848)'): 'Act 848 of 2025. Every public entity adopts a policy on authorized AI and automated decision tools; a human must make final decisions. No penalties or central oversight.',
+ ('NH','SB 657'): 'Passed the Senate and was amended in the House; on May 21, 2026 the Senate moved not to concur with the House amendment. No further action found; the session has ended.',
+ ('NY','S 7599 / A 8295'): 'Signed Dec. 19, 2025 (Chapter 711): agency tool lists, impact assessments every two years, inventory on the open data site. S 8831 (Chapter 86, signed Feb. 13, 2026) repealed that article before it took effect and keeps only employment-tool lists. The repeal language was read from the introduced print of S 8831, so check the signed version.',
+})
+SCOPE = {('IL','HB 3567'): 'gov'}
+rev = __import__('json').load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'reviewed_tags.json')))
+P2 = []
+for r in P:
+    k = (r[0], r[1])
+    if k in DROP: continue
+    r = list(r)
+    if k in KEYS:
+        r[6] = rev[KEYS[k]]
+        r[9] = 'M' if KEYS[k] == 'MI_HB4537' else 'H'      # H = checked against the full bill or memo text, with quotes
+    if k in DESC: r[7] = DESC[k]
+    if k in SCOPE: r[5] = SCOPE[k]
+    P2.append(tuple(r))
+P = P2
+
 ROOT = sys.argv[1] if len(sys.argv) > 1 else None
 status_by = {}
 if ROOT:
