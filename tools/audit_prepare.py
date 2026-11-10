@@ -10,7 +10,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.join(HERE, '..')
 
 KEYS = {('FED', 'OMB M-25-21'): 'FED_M-25-21', ('FED', 'OMB M-25-22'): 'FED_M-25-22', ('NY', 'LOADinG Act (S 7543)'): 'NY_S7543',
-        ('NY', 'S 7599 / A 8295'): 'NY_S7599', ('CT', 'PA 23-16 (SB 1103)'): 'CT_SB1103', ('CT', 'PA 26-15 (SB 5)'): 'CT_SB5',
+        ('NY', 'S 7599 / A 8295'): 'NY_S7599', ('NY', 'S 822 / A 433 (Ch. 96)'): 'NY_S822', ('CT', 'PA 23-16 (SB 1103)'): 'CT_SB1103', ('CT', 'PA 26-15 (SB 5)'): 'CT_SB5',
         ('MD', 'SB 818 (AI Governance Act)'): 'MD_SB818', ('VT', 'H 410 (Act 132)'): 'VT_H410', ('CA', 'AB 302'): 'CA_AB302',
         ('CA', 'SB 896'): 'CA_SB896', ('CO', 'SB 26-189'): 'CO_SB189', ('TX', 'HB 149 (TRAIGA)'): 'TX_HB149', ('TX', 'SB 1964'): 'TX_SB1964',
         ('TX', 'HB 2060'): 'TX_HB2060', ('KY', 'SB 4'): 'KY_SB4', ('MT', 'HB 178'): 'MT_HB178', ('AR', 'HB 1958 (Act 848)'): 'AR_HB1958',

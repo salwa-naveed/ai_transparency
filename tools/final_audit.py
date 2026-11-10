@@ -23,7 +23,7 @@ src = open(os.path.join(R, 'tools', 'audit_prepare.py')).read()
 ns = {}
 exec(src[src.index('KEYS = {'):src.index('EXTRA_FILES')], ns)
 KEYS = ns['KEYS']
-EXTRA = {'UT_HB444': ['UT_HB450.txt'], 'NY_S7599': ['NY_S8831.txt']}
+EXTRA = {'UT_HB444': ['UT_HB450.txt'], 'NY_S7599': ['NY_S8831.txt'], 'NY_S7543': ['NY_S822.txt']}
 issues = []
 nq = 0
 for p in POL:

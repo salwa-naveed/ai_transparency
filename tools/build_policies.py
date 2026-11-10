@@ -183,13 +183,25 @@ DESC.update({  # corrected after the independent audit (Nov. 2026): each claim r
  ('TX','HB 2060'): 'Created a temporary AI Advisory Council to study state-agency AI use and required a report on agency automated decision systems. The council and its subchapter expire Jan. 1, 2025.',
 })
 DESC.update({  # final audit (Nov. 2026): dates checked against LegiScan bill history, claims against bill text
- ('NY','LOADinG Act (S 7543)'): 'Chapter 696 of 2024, amended by Chapter 96 of 2025. Checked against the S 7543-B text: Article 4 restricts state-agency use of automated decision-making systems (Sec. 402), requires impact assessments at least once every two years and before material changes (Sec. 403), and requires each assessment to go to the governor and legislative leaders at least thirty days before implementation and to be published on the agency website (Sec. 404). The NY Senate sponsor memo describes it as barring unauthorized agency use without meaningful human review. It also requires an agency to cease using a system whose assessment finds discriminatory or biased outcomes (Sec. 403(2)). It has no public inventory (disclosures go to the legislature). The signed 2024 chapter may differ from this print, so check the final text. The 2025 expansion (S 7599) was repealed in 2026.',
+ ('NY','LOADinG Act (S 7543)'): 'Chapter 696 of 2024, amended by Chapter 96 of 2025. Checked against the S 7543-B text: Article 4 restricts state-agency use of automated decision-making systems (Sec. 402), requires impact assessments at least once every two years and before material changes (Sec. 403), and requires each assessment to go to the governor and legislative leaders at least thirty days before implementation and to be published on the agency website (Sec. 404). The NY Senate sponsor memo describes it as barring unauthorized agency use without meaningful human review. It also requires an agency to cease using a system whose assessment finds discriminatory or biased outcomes (Sec. 403(2)). It has no public inventory (disclosures go to the legislature). The 2025 expansion (S 7599) was repealed in 2026.',
  ('MT','HB 178'): 'Signed May 5, 2025. Government must disclose AI-generated material that was not reviewed by a human, and public-facing AI interfaces. A human with authority to reject or change it must review any AI recommendation or decision that could affect a person\'s legal rights, duties or privileges. Benefits not named.',
  ('AR','HB 1958 (Act 848)'): 'Act 848 of 2025. Every public entity adopts a policy on authorized AI and automated decision tools; a human must make final decisions. No penalties or central oversight.',
  ('NH','SB 657'): 'Passed the Senate and was amended in the House; on May 21, 2026 the Senate moved not to concur with the House amendment. No further action found; the session has ended.',
  ('NY','S 7599 / A 8295'): 'Signed Dec. 19, 2025 (Chapter 711): agency tool lists, impact assessments every two years, inventory on the open data site. S 8831 (Chapter 86, signed Feb. 13, 2026) repealed that article before it took effect and keeps only employment-tool lists. The repeal language was read from the introduced print of S 8831, so check the signed version.',
 })
 SCOPE = {('IL','HB 3567'): 'gov'}
+# NY_UPDATE_BEGIN  (Nov. 2026: current New York law, from the S 7543, S 822, S 7599 and S 8831 texts)
+DESC.update({
+ ('NY','LOADinG Act (S 7543)'): 'As signed Dec. 2024 (Chapter 696): restricted state-agency use of automated decision-making systems without meaningful human review (Sec. 402), required impact assessments at least every two years and before material changes (Sec. 403), required each assessment to go to the governor and legislative leaders at least thirty days before implementation and be published (Sec. 404), and required agencies to stop using a system whose assessment finds discriminatory or biased outcomes. Chapter 96 of 2025 (S 822, signed Feb. 14, 2025) repealed Sec. 403 and 404 and the human-review rule before this article took effect, so these provisions are not in force. Descriptions that cite two-year assessments, 30-day transmission and mandatory discontinuation under the LOADinG Act refer to this as-signed text. See the S 822 entry for the law now in force.',
+ ('NY','S 7599 / A 8295'): 'Signed Dec. 19, 2025 (Chapter 711) as a chapter amendment expanding the LOADinG Act: new Article 5 with agency tool lists, impact assessments every two years and an inventory. Chapter 86 of 2026 (S 8831, signed Feb. 13, 2026) repealed Article 5 and Sec. 103-f before they took effect, narrowed the disclosure to automated employment decision-making tools, and extended the labor protections to local employees (counties, cities, school districts, SUNY, CUNY and community colleges). Repeal language read from the introduced print of S 8831.',
+})
+TITLE = {('NY','LOADinG Act (S 7543)'): 'Original LOADinG Act as signed: impact assessments and human review (repealed before taking effect)',
+         ('NY','S 7599 / A 8295'): 'Chapter 711 expansion (Dec. 2025), repealed by Chapter 86 (Feb. 2026)'}
+STATUS = {('NY','LOADinG Act (S 7543)'): 'R'}
+NEW_ENTRIES = [('NY','S 822 / A 433 (Ch. 96)','AI inventory and employment-tool disclosure (the LOADinG Act now in force)',2025,'E','ben','I2 O1',
+ 'Chapter 96 of 2025, signed Feb. 14, 2025: rewrote the LOADinG Act before it took effect. State agencies publish a list of automated employment decision-making tools each year (Sec. 402). The state technology office maintains an inventory of state-agency AI systems, posted on the New York open data website each year and sent to the governor and legislative leaders (Sec. 103-e); systems that "directly impact the public" include those used in decisions about access to or eligibility for government benefits. The same act repealed the impact-assessment, submission and human-review provisions of the 2024 text. Chapter 86 of 2026 later narrowed disclosure further and extended labor protections to local employees.',
+ LS+'NY/bill/S00822/2025','H')]
+# NY_UPDATE_END
 rev = __import__('json').load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'reviewed_tags.json')))
 P2 = []
 for r in P:
@@ -200,8 +212,13 @@ for r in P:
         r[6] = rev[KEYS[k]]
         r[9] = 'M' if KEYS[k] == 'MI_HB4537' else 'H'      # H = checked against the full bill or memo text, with quotes
     if k in DESC: r[7] = DESC[k]
+    if k in TITLE: r[2] = TITLE[k]
+    if k in STATUS: r[4] = STATUS[k]
     if k in SCOPE: r[5] = SCOPE[k]
     P2.append(tuple(r))
+    if k == ('NY','LOADinG Act (S 7543)'):
+        for ne in NEW_ENTRIES:
+            ne = list(ne); ne[6] = rev['NY_S822']; ne[9] = 'H'; P2.append(tuple(ne))
 P = P2
 
 ROOT = sys.argv[1] if len(sys.argv) > 1 else None
