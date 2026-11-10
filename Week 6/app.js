@@ -37,11 +37,16 @@ function linksHtml(l){const m=qOf(l).meta||{};const a=[];
   if(m.stateUrl&&m.stateUrl!==m.textUrl)a.push(`<a href="${esc(m.stateUrl)}" target="_blank" rel="noopener">State legislature page</a>`);
   if(m.legiscan)a.push(`<a href="${esc(m.legiscan)}" target="_blank" rel="noopener">LegiScan record</a>`);
   return a.join(' · ')}
+function phrase(q){return q.replace(/\s+/g,' ').trim().split(' ').slice(0,8).join(' ')}
 function quotesHtml(l,part){
   const e=qOf(l);const all=e.q.filter(x=>!part||x.part===part||(x.part==='SCOPE'&&!part));
   if(!all.length)return part?`<p class="small">No quote recorded for this part.</p>`:'';
-  const body=all.map(x=>x.quote?`<blockquote><p>&ldquo;${esc(x.quote)}&rdquo;</p><footer><b>${esc(partName(x.part))}</b>${x.where?' · '+esc(x.where):''} <span class="pill ${x.supported==='yes'?'E':x.supported==='no'?'V':'A'}">${esc(SUP[x.supported]||x.supported)}</span></footer>${x.specifics?`<span class="small">${esc(x.specifics)}</span>`:''}${x.note?`<span class="small"> Note: ${esc(x.note)}</span>`:''}</blockquote>`:`<p class="small"><b>${esc(partName(x.part))}:</b> ${esc(SUP[x.supported]||x.supported)}. ${esc(x.specifics||'')}</p>`).join('');
-  return `${body}<p class="small">${linksHtml(l)}${linksHtml(l)?'. ':''}To cross-check, open the full text, press Ctrl+F (Command+F on Mac) and paste the first few words of the quote.</p>`}
+  const body=all.map(x=>x.quote?`<figure class="qt ${x.supported==='yes'?'ok':x.supported==='no'?'no':'part'}">
+    <figcaption><span class="chip pt">${esc(partName(x.part))}</span>${x.where?`<span class="chip loc">${esc(x.where)}</span>`:''}<span class="pill ${x.supported==='yes'?'E':x.supported==='no'?'V':'A'}">${esc(SUP[x.supported]||x.supported)}</span><button type="button" class="copy" data-phrase="${esc(phrase(x.quote))}">Copy search phrase</button></figcaption>
+    <blockquote>&ldquo;${esc(x.quote)}&rdquo;</blockquote>
+    ${x.specifics?`<p class="qs"><b>In plain English:</b> ${esc(x.specifics)}</p>`:''}${x.note?`<p class="qs"><b>Note:</b> ${esc(x.note)}</p>`:''}${x.caveat?`<p class="qs cav"><b>Caveat from the audit:</b> ${esc(x.caveat)}</p>`:''}</figure>`
+    :`<p class="small"><b>${esc(partName(x.part))}:</b> ${esc(SUP[x.supported]||x.supported)}. ${esc(x.specifics||'')}</p>`).join('');
+  return `<div class="quotes">${body}<p class="qlinks">${linksHtml(l)}</p><p class="small">To cross-check: open the full text, press Ctrl+F (Command+F on a Mac), then paste the search phrase.</p></div>`}
 const qCount=l=>qOf(l).q.filter(x=>x.quote).length;
 
 /* ---------- stats ---------- */
@@ -105,7 +110,7 @@ function wireMap(){
 }
 function pick(a){selected=a;drawMap();panel(a)}
 const order='EAVRF';
-const item=(l,part)=>`<li><b>${esc(l.bill)}</b> (${l.year}): ${esc(l.title)} <span class="pill ${l.status}">${SL[l.status]}</span> ${tagStr(l)}<br><span class="small">${esc(l.desc)} Confidence: ${confTxt[l.conf]}. ${l.url?`<a href="${esc(l.url)}" target="_blank" rel="noopener">Source</a>`:''}</span>${(part?qOf(l).q.length:qCount(l))?`<details${part?' open':''}><summary>${part?'Quotes from the text for this part':'Quotes from the text ('+qCount(l)+')'}</summary>${quotesHtml(l,part)}</details>`:''}</li>`;
+const item=(l,part)=>`<li><b>${esc(l.bill)}</b> (${l.year}): ${esc(l.title)} <span class="pill ${l.status}">${SL[l.status]}</span> ${tagStr(l)}<br><span class="small">${esc(l.desc)} Confidence: ${confTxt[l.conf]}. ${l.url?`<a href="${esc(l.url)}" target="_blank" rel="noopener">Source</a>`:''}</span>${(part?qOf(l).q.length:qCount(l))?`<details open><summary>${part?'Evidence for this part':'Evidence: quotes from the text ('+qCount(l)+')'}</summary>${quotesHtml(l,part)}</details>`:''}</li>`;
 function panel(a){
   const ls=(by[a]||[]).slice().sort((x,y)=>order.indexOf(x.status)-order.indexOf(y.status)),host=$('#statePanel');
   if(!ls.length){host.innerHTML=`<h3>${esc(NAME[a])}</h3><p>No law or bill on government use of AI or automated decision systems turned up in the sources checked. That is not proof none exists. Check the state legislature's own site.</p>`;return}
@@ -128,6 +133,7 @@ function cell(c,k){
   const other=ls.filter(d=>!enacted(d)&&d.fw[k]>0&&d.status!=='R');
   return{lvl,en:en.filter(d=>d.fw[k]>0),rb:rb.filter(d=>d.fw[k]>0||d.fw[k]===0),other,all:ls};
 }
+function snippet(c,k){const x=cell(c,k);for(const d of x.en.concat(x.rb)){const q=qOf(d).q.find(r=>r.part===k&&r.quote&&r.supported!=='no')||qOf(d).q.find(r=>r.part===k&&r.quote);if(q){const t=q.quote.replace(/\s+/g,' ');return `<span class="snip">&ldquo;${esc(t.length>150?t.slice(0,147)+'...':t)}&rdquo;<small> ${esc(q.where||'')}</small></span>`}}return ''}
 function cellHtml(c,k){
   const x=cell(c,k);let sym=SYM[x.lvl],c2='c'+x.lvl,txt=[];
   if(x.lvl===0&&x.rb.length){sym='✕';c2='c0'}
@@ -136,7 +142,7 @@ function cellHtml(c,k){
   if(!x.en.length&&x.rb.length)txt.push(`Rolled back: ${esc(x.rb[0].bill.split(' (')[0])}`);
   if(!x.en.length&&!x.rb.length&&x.other.length){const o=x.other[0];txt.push(`${o.status==='A'?'Bill alive':'Bill failed'}: ${esc(o.bill)}`)}
   const low=x.en.length&&x.en.every(d=>d.conf==='L')?' <span class="bgtag">low confidence</span>':'';
-  return `<td class="f${x.lvl}"><button class="cell ${c2}" data-c="${c}" data-k="${k}" aria-label="${esc(NAME[c])}, ${esc(FWN[k].n)}: ${x.lvl===2?'close match':x.lvl===1?'partial match':x.rb.length?'rolled back':'none found'}"><span class="sym">${sym}</span>${txt.length?txt.join(', '):'<span class="more">None found</span>'}${low}</button></td>`;
+  return `<td class="f${x.lvl}"><button class="cell ${c2}" data-c="${c}" data-k="${k}" aria-label="${esc(NAME[c])}, ${esc(FWN[k].n)}: ${x.lvl===2?'close match':x.lvl===1?'partial match':x.rb.length?'rolled back':'none found'}"><span class="sym">${sym}</span>${txt.length?txt.join(', '):'<span class="more">None found</span>'}${snippet(c,k)}${low}</button></td>`;
 }
 function drawChart(){
   const avail=['FED'].concat(STATES).filter(c=>!cols.includes(c));
@@ -175,7 +181,7 @@ function drawTable(){
   rows=D.filter(d=>(!u||d.status===u)&&(!s||d.st===s)&&(!c||d.scope===c)&&(!f||d.fw[f]>0)&&(!q||(d.bill+' '+d.title+' '+NAME[d.st]+' '+d.desc).toLowerCase().includes(q)));
   rows=rows.slice().sort((a,b)=>order.indexOf(a.status)-order.indexOf(b.status)||a.st.localeCompare(b.st));
   $('#lawCount').textContent=`${rows.length} of ${D.length} entries`;
-  $('#lawTable tbody').innerHTML=rows.map(l=>`<tr><td>${esc(NAME[l.st])}</td><td>${l.url?`<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.bill)}</a>`:esc(l.bill)}</td><td>${esc(l.title)}<br><span class="small">${esc(l.desc)}</span>${qCount(l)?`<details><summary>Quotes from the text (${qCount(l)})</summary>${quotesHtml(l)}</details>`:''}</td><td>${l.year}</td><td><span class="pill ${l.status}">${SL[l.status]}</span><br><span class="small">${SC[l.scope]}</span></td><td>${tagStr(l)||'<span class="small">None</span>'}</td><td>${confTxt[l.conf]}</td></tr>`).join('')||'<tr><td colspan="7">No entries match.</td></tr>';
+  $('#lawTable tbody').innerHTML=rows.map(l=>`<tr><td>${esc(NAME[l.st])}</td><td>${l.url?`<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.bill)}</a>`:esc(l.bill)}</td><td>${esc(l.title)}<br><span class="small">${esc(l.desc)}</span></td><td>${l.year}</td><td><span class="pill ${l.status}">${SL[l.status]}</span><br><span class="small">${SC[l.scope]}</span></td><td>${tagStr(l)||'<span class="small">None</span>'}</td><td>${confTxt[l.conf]}</td></tr>${qCount(l)?`<tr class="evid"><td colspan="7"><details open><summary>Evidence: quotes from the text (${qCount(l)})</summary>${quotesHtml(l)}</details></td></tr>`:''}`).join('')||'<tr><td colspan="7">No entries match.</td></tr>';
 }
 ['#q','#fs','#fst','#fsc','#ff'].forEach(id=>$(id).addEventListener('input',drawTable));
 $('#csv').onclick=()=>{
@@ -184,6 +190,11 @@ $('#csv').onclick=()=>{
   const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([lines.map(r=>r.map(q).join(',')).join('\n')],{type:'text/csv'}));a.download='gov-ai-benefits-policies.csv';a.click();
 };
 
+/* ---------- evidence helpers ---------- */
+document.addEventListener('click',e=>{const b=e.target.closest('.copy');if(!b)return;
+  const t=b.dataset.phrase;const done=()=>{const o=b.textContent;b.textContent='Copied';setTimeout(()=>b.textContent=o,1200)};
+  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(done,()=>{});else done()});
+$('#toggleQ').onclick=()=>{const t=$('#toggleQ');const open=t.dataset.open!=='1';t.dataset.open=open?'1':'0';t.textContent=open?'Collapse all quotes':'Expand all quotes';document.querySelectorAll('#laws details').forEach(d=>d.open=open)};
 /* ---------- nav ---------- */
 $('#menuBtn').onclick=()=>{const n=$('#nav');const o=n.classList.toggle('open');$('#menuBtn').setAttribute('aria-expanded',o)};
 $('#nav').addEventListener('click',()=>$('#nav').classList.remove('open'));

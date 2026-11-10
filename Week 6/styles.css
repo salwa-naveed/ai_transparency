@@ -107,3 +107,21 @@ h4{font-size:1rem;margin:1.2em 0 .3em}
 blockquote{margin:8px 0;padding:6px 12px;border-left:3px solid var(--acc);background:var(--bg);border-radius:0 4px 4px 0}
 blockquote p{margin:0 0 4px;font-size:14px}blockquote footer{font-size:12px;color:var(--mute)}
 details{margin-top:6px}summary{cursor:pointer;color:var(--acc);font-size:13px}
+
+/* prominent evidence */
+.quotes{margin-top:8px}
+figure.qt{margin:12px 0;padding:12px 14px;border-radius:6px;border:1px solid var(--line);border-left:6px solid var(--acc);background:color-mix(in srgb,var(--acc) 9%,var(--card))}
+figure.qt.part{border-left-color:var(--warn)}figure.qt.no{border-left-color:#d64541}
+figure.qt figcaption{display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center;margin-bottom:8px}
+figure.qt blockquote{margin:0;padding:0;border:0;background:none;font:italic 16px/1.55 Georgia,'Times New Roman',serif;color:var(--ink)}
+.chip{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:4px}
+.chip.pt{background:var(--acc);color:var(--card)}.chip.loc{border:1px solid var(--acc);color:var(--ink);font-family:ui-monospace,Menlo,monospace;font-weight:600}
+button.copy{font-size:12px;padding:2px 8px;margin-left:auto}
+.qs{margin:8px 0 0;font-size:14px;color:var(--ink)}.qlinks{margin:8px 0 2px;font-size:14px}
+tr.evid>td{background:var(--bg);padding:4px 14px 14px}
+details>summary{font-size:15px;font-weight:600}
+.snip{display:block;margin-top:6px;padding-left:8px;border-left:3px solid var(--acc);font:italic 12.5px/1.35 Georgia,serif;color:var(--ink)}
+.snip small{font:600 11px ui-monospace,Menlo,monospace;color:var(--mute);margin-left:4px}
+.fwtable th,.fwtable td{min-width:210px;max-width:260px}
+
+.qs.cav{padding:6px 10px;border-left:4px solid var(--warn);background:color-mix(in srgb,var(--warn) 12%,transparent);border-radius:0 4px 4px 0}

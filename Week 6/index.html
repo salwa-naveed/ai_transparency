@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>AI Transparency in Public Benefits: State Law Map</title>
 <meta name="description" content="Map and framework chart of state laws and bills on government use of automated decision systems, focused on public benefits programs like Medicaid and SNAP.">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=20261109">
 </head>
 <body>
 <header class="site-header">
@@ -60,7 +60,7 @@
       <div><label for="fsc">Scope</label><select id="fsc"></select></div>
       <div><label for="ff">Framework part</label><select id="ff"></select></div>
     </div>
-    <div class="bar"><span id="lawCount" class="small"></span><span class="sp"></span><button id="csv">Download CSV</button></div>
+    <div class="bar"><span id="lawCount" class="small"></span><span class="sp"></span><button id="toggleQ" data-open="1">Collapse all quotes</button><button id="csv">Download CSV</button></div>
     <div class="scroll"><table id="lawTable"><thead><tr><th>State</th><th>Bill or law</th><th>What it does</th><th>Year</th><th>Outcome</th><th>Framework</th><th>Conf.</th></tr></thead><tbody></tbody></table></div>
   </section>
 
@@ -73,6 +73,7 @@
       <li><b>Bill text and status:</b> the LegiScan API (fetched Nov. 2026) for the full text of the latest version of each bill, and OMB memos M-25-21 and M-25-22 from whitehouse.gov. The policy paper supplied the framework and the details for New York, Colorado, Texas and the federal government.</li>
       <li><b>Quotes:</b> each entry has a "Quotes from the text" box. Each quote was copied from the text and then re-checked by a script against the stored bill text; any quote that did not match exactly was dropped. A quote's label gives the section as it appears in the text (for example "Sec. 37(b)(2)").</li>
       <li><b>To cross-check:</b> open the "Full text" link in the box, press Ctrl+F (Command+F on a Mac) and paste the first few words of the quote. In the Framework chart, click any cell to see the quotes for just that part.</li>
+      <li><b>Independent audit (Nov. 2026):</b> after the quotes were first extracted, a second set of reviewers re-read the text around every quote, re-rated every framework part under the codebook, and checked the facts in each description. They found 10 serious problems among 261 quotes (five wrong section labels and six quotes that did not support the part they were cited for), disagreed with about 40 ratings, and found seven description claims the text contradicts. The corrections are applied here. Quotes that carry a yellow "Caveat from the audit" line are real passages with a limit worth knowing (for example "may" instead of "shall", an exemption, a delayed date, or a definition rather than a duty). The full row-by-row audit is in <code>audit/quote_audit.xlsx</code> in the project folder, with a column for your own check.</li>
       <li><b>Known text quirks:</b> LegiScan's text comes from PDFs, so line numbers or odd spacing can appear inside a quote, and chaptered bills may show struck-through words as plain text. If a quote does not match by Ctrl+F, try a shorter phrase, then check the state's own site.</li>
       <li><b>Where the text disagreed with earlier summaries:</b> the tags were revised after reading the text. Two entries were removed (Utah HB 320 covers private sandbox participants, and Hawaii SB 59 covers private entities, not agencies). Colorado's SB 26-189 defines "deployer" as "a person doing business in Colorado" and neither names nor exempts government agencies, so whether it binds state agencies is an open question.</li>
     </ul>
@@ -116,8 +117,8 @@
 <script src="vendor/d3-geo.min.js"></script>
 <script src="vendor/topojson-client.min.js"></script>
 <script src="vendor/us-states.js"></script>
-<script src="data/policies.js"></script>
-<script src="data/quotes.js"></script>
-<script src="app.js"></script>
+<script src="data/policies.js?v=20261109"></script>
+<script src="data/quotes.js?v=20261109"></script>
+<script src="app.js?v=20261109"></script>
 </body>
 </html>

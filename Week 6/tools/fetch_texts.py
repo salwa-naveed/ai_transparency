@@ -4,8 +4,8 @@ Writes OUT_DIR/<STATE>_<BILL>.json (record) and OUT_DIR/<STATE>_<BILL>.txt (plai
 import base64, html, io, json, os, re, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import legiscan_api as L
-PYLIB = '/private/tmp/claude-501/w/pylib'
-if os.path.isdir(PYLIB): sys.path.insert(1, PYLIB)
+PYLIB = os.environ.get('PYLIB', '')
+if PYLIB and os.path.isdir(PYLIB): sys.path.insert(1, PYLIB)
 
 OUT = sys.argv[1]; os.makedirs(OUT, exist_ok=True)
 # (state, bill number, search year hint)
@@ -16,6 +16,7 @@ T = [('NY','S7543',2023),('NY','S7599',2025),('NY','S8831',2025),('CT','SB1103',
      ('CA','SB1248',2025),('CA','SB430',2025),('CA','AB2412',2025),('HI','SB59',2025),('IL','HB3567',2025),('IL','SB1366',2025),
      ('GA','HB147',2025),('RI','H7119',2026),('OK','HB3545',2026),('OR','HB4103',2026),('NH','SB657',2026),('NH','HB1506',2026),
      ('NM','SB68',2026),('FL','S146',2026),('MS','HB1640',2026),('AK','SB2',2025)]
+ID_OVERRIDE = {('TX', 'HB149'): 2007109}   # TRAIGA is the 89th regular-session HB 149; search also returns unrelated special-session bills
 norm = lambda b: re.sub(r'^([A-Za-z]+)0+(\d)', r'\1\2', re.sub(r'\s', '', b)).upper()
 
 def to_text(mime, raw):
@@ -30,11 +31,13 @@ def to_text(mime, raw):
         s = html.unescape(re.sub(r'<[^>]+>', ' ', s))
     return s
 
+ONLY = os.environ.get('ONLY')
 summary = []
 for st, bill, yr in T:
+    if ONLY and '%s_%s' % (st, bill) != ONLY: continue
     tag = '%s_%s' % (st, bill)
-    cand = None
-    for year in (yr, 1):
+    cand = {'bill_id': ID_OVERRIDE[(st, bill)]} if (st, bill) in ID_OVERRIDE else None
+    for year in ((yr, 1) if cand is None else ()):
         try:
             d = L.call('getSearch', state=st, bill=bill, year=year)
         except RuntimeError as e:
