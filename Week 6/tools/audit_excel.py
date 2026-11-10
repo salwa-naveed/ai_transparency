@@ -130,6 +130,7 @@ for line in [
     '3. A second, independent set of AI reviewers re-read the text around each quote and judged: whether they found it, whether the section label is right, context flags (struck-through text, preamble, "may" vs "shall", exemptions, sunsets), and whether it supports the claimed part.',
     '4. The same reviewers re-rated every framework part against the codebook using the whole bill text, and checked the facts in each entry description.',
     'Limits: all judgments except the script check are made by AI reviewers. Text extracted from PDFs can contain line numbers, odd spacing and struck-through words. Close vs. loose is a judgment under the codebook, not an objective fact.',
+    'Final check (after the audit): descriptions of Montana HB 178, Arkansas HB 1958, New Hampshire SB 657, New York S 7599 and the New York LOADinG Act were corrected against LegiScan bill histories and the bill text; two Vermont quotes that showed only non-binding recommendations were dropped.',
     'The columns "YOUR check" are for a human spot-check: open the full text, press Ctrl+F, paste the first words of the quote, and mark Y, N or ?.',
 ]:
     ws.append([line])
